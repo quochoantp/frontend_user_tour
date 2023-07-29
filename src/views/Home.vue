@@ -549,13 +549,13 @@ export default {
 @keyframes changeBg {
   0%,
   100% {
-    background-image: url("images/poster1.jpg");
+    background-image: url("src/images/poster1.jpg");
   }
   33% {
-    background-image: url("images/poster2.png");
+    background-image: url("src/images/poster2.png");
   }
   66% {
-    background-image: url("images/poster3.jpg");
+    background-image: url("src/images/poster3.jpg");
   }
 }
 
