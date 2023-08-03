@@ -544,6 +544,8 @@ export default {
   position: relative;
   display: flex;
   justify-content: center;
+  background-size: cover;
+  background-image: url("src/images/poster1.jpg");
 }
 
 @keyframes changeBg {
