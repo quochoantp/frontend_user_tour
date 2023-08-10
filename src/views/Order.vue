@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container>
     <v-card class="d-flex">
       <v-img
         :src="tour.mainImageUrl"
@@ -281,7 +281,7 @@
             </div>
             <v-radio-group v-model="payOnline" column>
               <v-radio
-                label="Thanh toán tại công ty Lửa Việt tour"
+                label="Thanh toán tại công ty Lửa Việt"
                 value="false"
               ></v-radio>
               <v-radio
@@ -296,7 +296,7 @@
         </v-card>
       </v-col>
     </v-row>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -319,7 +319,8 @@ export default {
         { value: "Nữ", text: "Nữ" },
       ],
       response: {
-        isPaymentOnline: "",
+        tourId: null,
+        isPaymentOnline: false,
         orderInfoDTO: {},
         touristDTOList: [],
       },
@@ -435,8 +436,9 @@ export default {
         priceId: this.tour.priceId,
         sumPrice: this.sumPrice,
       };
-      this.response.isPaymentOnline = this.payOnline;
+      this.response.tourId = this.tour.id;
       this.response.orderInfoDTO = this.order;
+      this.response.isPaymentOnline = this.payOnline;
       this.response.touristDTOList = this.touristList;
       const res = await this.orderTour(this.response);
       var item = {
@@ -445,7 +447,8 @@ export default {
       };
       console.log(res);
       console.log(item);
-      if (res.status == 201) {
+      console.log(this.isPaymentOnline);
+      if (res.status == 201 && this.payOnline === "true") {
         const str = await axios.get(
           `http://localhost:8091/api/v1/payment/payvn?amount=${this.sumPrice}&ordertype=${res.data.id}`,
           item
@@ -455,6 +458,8 @@ export default {
         // alert(
         //   "Đặt tour thành công. Thông tin chi tiết sẽ được gửi đến email của quý khách!"
         // );
+      } else {
+        alert("Đặt tour thành công. Vui lòng thanh toán đặt cọc trước 3 ngày!");
       }
     },
 

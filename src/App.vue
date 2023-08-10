@@ -4,6 +4,7 @@
 
     <div class="mt-16">
       <router-view></router-view>
+
       <!-- Messenger Plugin chat Code -->
       <div id="fb-root"></div>
 

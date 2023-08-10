@@ -110,9 +110,7 @@
               <v-list-item v-if="authentication == false" router to="/login"
                 >Đăng nhập</v-list-item
               >
-              <v-list-item v-if="authentication == false" router to="/register"
-                >Đăng ký</v-list-item
-              >
+
               <v-list-item v-if="authentication == true"
                 ><v-btn @click="logOut">Đăng xuất</v-btn></v-list-item
               >
@@ -140,10 +138,6 @@ export default {
       {
         title: "Đăng nhập",
         to: "/login",
-      },
-      {
-        title: "Đăng ký",
-        to: "/register",
       },
       {
         title: "Đăng xuất",

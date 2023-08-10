@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container>
     <v-card color="#f9f9f9">
       <v-card-title class="d-flex justify-space-between">
         <div class="text-h5 font-weight-bold">{{ tour.name }}</div>
@@ -56,20 +56,7 @@
             </v-row>
           </v-col>
         </v-row>
-        <v-row>
-          <v-card
-            height="400px"
-            class="overflow-auto"
-            v-if="tour.shortDesc != ''"
-          >
-            <div
-              v-for="(item2, index2) in splitText(tour.shortDesc)"
-              :key="index2"
-            >
-              <div v-html="item2"></div>
-            </div>
-          </v-card>
-        </v-row>
+
         <v-row>
           <v-col>
             <v-card height="300px">
@@ -116,24 +103,13 @@
                 </li>
               </v-card-text> -->
               <v-card-text>
-                <p>
-                  Đà Lạt, một thành phố nằm ẩn mình giữa dãy núi cao nguyên Lâm
-                  Đồng của miền Trung Việt Nam, là một điểm đến lý tưởng cho
-                  những ai tìm kiếm không gian thanh bình và khí hậu mát mẻ
-                  quanh năm. Với những cánh đồng hoa dã quỳ bất tận, những thác
-                  nước mộng mị và hồ nước trong xanh, Đà Lạt đã nhanh chóng trở
-                  thành "thành phố hoa" và điểm đến lãng mạn của người yêu thích
-                  du lịch.
-                </p>
+                <div
+                  v-for="(item2, index2) in splitText(tour.shortDesc)"
+                  :key="index2"
+                >
+                  <div v-html="item2"></div>
+                </div>
                 <br />
-                <p>
-                  Du lịch Đà Lạt không chỉ dành riêng cho những cặp đôi lãng mạn
-                  mà còn thu hút những tâm hồn thích phiêu lưu bởi những dãy núi
-                  đồi xanh ngắt, những cung đường mòn quanh co đầy thách thức.
-                  Được biết đến là "Thành phố sương mù", mỗi buổi sáng tại Đà
-                  Lạt thường được phủ bởi những tia nắng nhẹ nhàng và sương mù
-                  mơ hồ, tạo nên bầu không khí lãng mạn và thơ mộng.
-                </p>
               </v-card-text>
             </v-card>
           </v-col>
@@ -249,7 +225,7 @@
         </v-card>
       </v-col>
     </v-row>
-  </div>
+  </v-container>
 </template>
 
 <script>

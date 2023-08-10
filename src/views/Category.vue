@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container>
     <v-row>
       <v-col>
         <div>
@@ -104,7 +104,7 @@
                 cols="12"
                 md="6"
                 lg="4"
-                v-for="(item, i) in tours"
+                v-for="(item, i) in displayedTours"
                 :key="i"
               >
                 <v-hover
@@ -229,11 +229,20 @@
                 </v-hover>
               </v-col>
             </v-row>
+            <v-row>
+              <v-pagination
+                v-model="currentPage"
+                :length="totalPages"
+                @input="changePage"
+                class="text-right"
+              ></v-pagination
+            ></v-row>
+            <br />
           </div>
         </div>
       </v-col>
     </v-row>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -247,6 +256,8 @@ export default {
   data() {
     return {
       menu: false,
+      currentPage: 1,
+      toursPerPage: 9,
       periods: [
         { value: 1, text: "1-3 ngày" },
         { value: 2, text: "4-7 ngày" },
@@ -265,6 +276,14 @@ export default {
       tours: "tourList/getTours",
       places: "place/getPlaces",
     }),
+    displayedTours() {
+      const startIndex = (this.currentPage - 1) * this.toursPerPage;
+      const endIndex = startIndex + this.toursPerPage;
+      return this.tours.slice(startIndex, endIndex);
+    },
+    totalPages() {
+      return Math.ceil(this.tours.length / this.toursPerPage);
+    },
   },
   created() {
     this.getTours(this.objSearch);
@@ -275,6 +294,9 @@ export default {
       getPlaces: "place/getAll",
       setObjSearch: "tourList/setObjSearch",
     }),
+    changePage(newPage) {
+      this.currentPage = newPage;
+    },
     formatDate(date) {
       var d = new Date(date),
         month = "" + (d.getMonth() + 1),
