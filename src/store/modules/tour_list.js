@@ -8,7 +8,8 @@ const state = {
         toPeriod: "",
         period: "",
         fromPrice: "",
-        toPrice: ""
+        toPrice: "",
+        numOfPeople:""
     },
     tours: [],
     tour: null,
@@ -55,7 +56,8 @@ const mutations = {
             toPeriod: payload.toPeriod,
             period: payload.period,
             fromPrice: payload.fromPrice,
-            toPrice: payload.toPrice
+            toPrice: payload.toPrice,
+            numOfPeople:payload.numOfPeople
         }
     },
     setTours: (state, payload) => {

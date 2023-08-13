@@ -67,7 +67,8 @@
               </v-select>
 
               <h6>Số người</h6>
-              <v-select dense outlined v-model="numOfPeople"> </v-select>
+              <v-text-field dense outlined v-model="objSearch.numOfPeople">
+              </v-text-field>
 
               <h6>Giá</h6>
               <v-range-slider
@@ -259,6 +260,7 @@ export default {
       currentPage: 1,
       toursPerPage: 9,
       periods: [
+        { value: null, text: "Chọn ngày" },
         { value: 1, text: "1-3 ngày" },
         { value: 2, text: "4-7 ngày" },
         { value: 3, text: "8-14 ngày" },
